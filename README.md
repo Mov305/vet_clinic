@@ -17,8 +17,11 @@ To get a local copy up and running follow these simple example steps.
 2- Navigate to the location of the folder in your machine:
 **`you@your-Pc-name:~$ cd <folder>`**
 3- after you get the project to your local machine you can run it if you have an PSQL server runing
-4- run the quires using this line vet_clinic=# \i A:/micrvese/M4/databases/queries.sql
+4- run the quires using this line vet_clinic=# \i A:/micrvese/M4/databases/queries.sql.
 
+### results
+
+[click me](https://github.com/Mov305/vet_clinic/blob/master/queries%20Img.png)
 
 ### Clone and review it
 
@@ -32,7 +35,6 @@ git clone https://github.com/Mov305/vet_clinic
 
 cd vet_clinic
 
-
 ### To open project with vs code
 
 code .
@@ -45,7 +47,7 @@ Linkedin: [Abdelrhman samy](https://www.linkedin.com/in/abdelrhman-samy-80b14b21
 
 ## Contributing
 
-Contributions, issues, and reviews are very welcome! 
+Contributions, issues, and reviews are very welcome!
 
 ## Support
 
@@ -60,4 +62,3 @@ Inspiration
 ## 📝 License
 
 This project is [MIT](https://github.com/Mov305/To-do-list/blob/master/MIT.md) licensed.
-
