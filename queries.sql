@@ -20,10 +20,10 @@ Delete from animals; -- Path: delete all animals
 Rollback;
 
 Begin;
-Savepoint savepoint1;
 Delete from animals where date_of_birth > '2022-01-01'; -- Path: delete all animals born after 2022
-Rollback to savepoint1;
+Savepoint savepoint1;
 Update animals set weight_kg = weight_kg * -1;
+Rollback to savepoint1;
 Update animals set weight_kg = weight_kg * -1;
 Commit;
 
