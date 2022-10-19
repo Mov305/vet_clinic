@@ -31,6 +31,15 @@ Select Count(name) from animals; -- Path: count all animals
 Select Count(name) from animals where escape_attempts = 0; -- Path: count all animals that have 0 escape attempts
 Select Avg(weight_kg) from animals; -- Path: find the average weight of animals
 Select Max(escape_attempts) from animals Group by neutered; -- Path: find the max escape attempts of all animals
-Select Min(weight_kg), Max(weight_kg) from animals Group by species; -- Path: find the min and max weight of each species
+-- Select Min(weight_kg), Max(weight_kg) from animals Group by species; -- Path: find the min and max weight of each species
 Select Avg(escape_attempts) from animals where date_of_birth between '1990-01-01' and '2000-01-01' Group by species; -- Path: find the average escape attempts of all animals born between 1990 and 2000
 
+Select name from animals join owners on owners.full_name = 'Melody Pond' and owners.id = animals.owner_id; -- Path: find all animals owned by Melody Pond;
+Select animals.name from animals join species on species.name = 'Pokemon'; -- Path: find all animals that are pokemon;
+Select full_name, name from owners left join animals on owners.id = animals.owner_id; -- Path: find all owners and their animals;
+Select species.name , Count(animals.name) from species join animals on species.id = animals.species_id Group by species.name; -- Path: find all species and their number of animals;
+Select name as animals_owned_by_jennifer_orwell from animals join owners on owners.id = animals.owner_id and owners.full_name = 'Jennifer Orwell'; -- Path: find all animals owned by Jennifer Orwell;
+Select name as animals_owned_by_Dean_Winchester from animals join owners on owners.id = animals.owner_id and owners.full_name = 'Dean Winchester' and animals.escape_attempts = 0; -- Path: find all animals owned by Dean Winchester;
+select max_name, max_pet from (
+    Select full_name as max_name, Count(name) as max_pet from animals join owners on owners.id = animals.owner_id Group by owners.full_name
+) as derivedTable order by max_pet DESC limit 1; -- Path: find the most recent animal owned by each owner;
