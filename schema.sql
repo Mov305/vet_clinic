@@ -34,3 +34,28 @@ CREATE TABLE IF NOT EXISTS animals(
     SET
         NULL
 );
+
+CREATE TABLE IF NOT EXISTS vets (
+    id integer GENERATED ALWAYS AS IDENTITY,
+    name text,
+    age integer,
+    date_of_graduation date,
+    CONSTRAINT vets_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS specializations (
+    vet_id integer ,
+    species_id integer,
+    CONSTRAINT specializations_pkey PRIMARY KEY (vet_id, species_id),
+    CONSTRAINT vet_id FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE,
+    CONSTRAINT species_id FOREIGN KEY (species_id) REFERENCES species (id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS visits (
+    animal_id integer ,
+    vet_id integer ,
+    date_of_visit date,
+    CONSTRAINT visits_pkey PRIMARY KEY (animal_id, vet_id, date_of_visit),
+    CONSTRAINT animal_id FOREIGN KEY (animal_id) REFERENCES animals (id) ON DELETE CASCADE,
+    CONSTRAINT vet_id FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE
+);
