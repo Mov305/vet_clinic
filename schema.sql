@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS specializations (
 );
 
 CREATE TABLE IF NOT EXISTS visits (
-    animal_id integer ,
-    vet_id integer ,
-    date_of_visit date,
-    CONSTRAINT visits_pkey PRIMARY KEY (animal_id, vet_id, date_of_visit),
-    CONSTRAINT animal_id FOREIGN KEY (animal_id) REFERENCES animals (id) ON DELETE CASCADE,
-    CONSTRAINT vet_id FOREIGN KEY (vet_id) REFERENCES vets (id) ON DELETE CASCADE
+  id                  INT GENERATED ALWAYS AS IDENTITY,
+  vets_id             INT REFERENCES vets,
+  animals_id          INT REFERENCES animals,
+  date_of_visit       DATE,
+  PRIMARY KEY (id)
 );
+
